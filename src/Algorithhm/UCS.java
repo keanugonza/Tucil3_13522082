@@ -1,4 +1,9 @@
+package Algorithhm;
 import java.util.*;
+
+import Util.Print;
+import Util.Neighboors;
+import Util.Node;
 
 public class UCS{
 
@@ -12,13 +17,13 @@ public class UCS{
 
         List<String> visited = new ArrayList<>();
         visited.add(start);
-        Util.printPriorityQueue(queue);
+        Print.printPriorityQueue(queue);
 
         int count = 1;
         while (!queue.isEmpty()) {
 //            Util.printPriorityQueue(queue);
             Node currentNode = queue.poll();
-            String currentWord = currentNode.word;
+            String currentWord = currentNode.getWord();
             visited.add(currentWord);
 //            System.out.println(count + ". " + currentWord);
 
@@ -28,14 +33,14 @@ public class UCS{
                 return result;
             }
 
-            List<String> neighbors = Util.getNeighboors(currentWord, Database);
+            List<String> neighbors = Neighboors.getNeighboors(currentWord, Database);
             count++;
 
 //            Collections.reverse(neighbors);
             for (String neighbor : neighbors) {
                 if (!visited.contains(neighbor)) {
                     visited.add(neighbor);
-                    Node newNode = new Node(neighbor, currentNode.cost + 1, currentNode);
+                    Node newNode = new Node(neighbor, currentNode.getCost() + 1, currentNode);
                     queue.add(newNode);
                     if (neighbor.equals(end)) {
                         List<String> result = makePath(newNode);
@@ -53,8 +58,8 @@ public class UCS{
     private static List<String> makePath(Node node) {
         List<String> result = new ArrayList<>();
         while (node != null) {
-            result.add(node.word);
-            node = node.path;
+            result.add(node.getWord());
+            node = node.getPath();
         }
         Collections.reverse(result);
         return result;

@@ -2,16 +2,22 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import Algorithhm.AStar;
+import Algorithhm.GBFS;
+import Algorithhm.UCS;
+import Util.Print;
+import Util.readFile;
+
 
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        List<String> Database_raw = Util.readWordsFromFile();
+        List<String> Database_raw = readFile.readWordsFromFile();
         List<String> Result = new ArrayList<>();
 
         System.out.print("\nMasukkan kata awal: ");
         String start = scanner.next();
-        while(!Util.isExist(start, Database_raw)){
+        while(!readFile.isExist(start, Database_raw)){
             System.out.println("Kata tidak exist");
             System.out.print("Masukkan kata awal: ");
             start = scanner.next();
@@ -19,7 +25,7 @@ public class Main {
 
         System.out.print("\nMasukkan kata tujuan: ");
         String end = scanner.next();
-        while(!Util.isExist(end, Database_raw)){
+        while(!readFile.isExist(end, Database_raw)){
             System.out.println("Kata tidak exist");
             System.out.print("Masukkan kata tujuan: ");
             end = scanner.next();
@@ -28,7 +34,7 @@ public class Main {
         if (start.length() != end.length()) {
             System.out.println("Panjang tidak sama, tidak dapat dicari hasilnya");
         }else{
-            Util.printAlgo();
+            Print.printAlgo();
             int pilihan = scanner.nextInt();
             while (pilihan < 0 || pilihan > 3) {
                 System.out.print("Pilih nomor algoritma dengan benar: ");
@@ -62,24 +68,24 @@ public class Main {
                 Result = UCS.UCS_Algorithm(start, end, Database);
                 endTime = System.nanoTime();
                 System.out.println("\nUCS Algorithm");
-                Util.printHasil(Result);
+                Print.printHasil(Result);
                 System.out.println((endTime - startTime)/1_000_000_000 + " detik");
                 startTime = System.nanoTime();
                 Result = GBFS.GBFS_Algorithm(start, end, Database);
                 endTime = System.nanoTime();
                 System.out.println("\nGBFS Algorithm");
-                Util.printHasil(Result);
+                Print.printHasil(Result);
                 System.out.println((endTime - startTime)/1_000_000_000 + " detik");
                 startTime = System.nanoTime();
                 Result = AStar.AStar_Algorithm(start, end, Database);
                 endTime = System.nanoTime();
                 System.out.println("\nA* Algorithm");
-                Util.printHasil(Result);
+                Print.printHasil(Result);
                 System.out.println((endTime - startTime)/1_000_000_000 + " detik");
 
             } else{
                 System.out.println();
-                Util.printHasil(Result);
+                Print.printHasil(Result);
                 System.out.println((endTime - startTime)/1_000_000_000 + " detik");
             }
         }

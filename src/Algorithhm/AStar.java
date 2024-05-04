@@ -1,4 +1,8 @@
+package Algorithhm;
 import java.util.*;
+
+import Util.Neighboors;
+import Util.Node;
 
 public class AStar{
 
@@ -17,7 +21,7 @@ public class AStar{
         int count = 1;
         while (!queue.isEmpty()){
             Node currentNode = queue.poll();
-            String currentWord = currentNode.word;
+            String currentWord = currentNode.getWord();
             visited.add(currentWord);
 //            System.out.println(count + ". " + currentWord);
 
@@ -27,7 +31,7 @@ public class AStar{
                 return result;
             }
 
-            List<String> neighbors = Util.getNeighboors(currentWord, Database);
+            List<String> neighbors = Neighboors.getNeighboors(currentWord, Database);
             count++;
 
 //            Collections.reverse(neighbors);
@@ -62,8 +66,8 @@ public class AStar{
     private static List<String> makePath(Node node) {
         List<String> result = new ArrayList<>();
         while (node != null) {
-            result.add(node.word);
-            node = node.path;
+            result.add(node.getWord());
+            node = node.getPath();
         }
         Collections.reverse(result);
         return result;

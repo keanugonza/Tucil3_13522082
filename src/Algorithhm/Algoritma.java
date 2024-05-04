@@ -1,4 +1,8 @@
+package Algorithhm;
 import java.util.*;
+
+import Util.Node;
+import Util.Neighboors;
 
 public class Algoritma{
 
@@ -16,7 +20,7 @@ public class Algoritma{
         int count = 1;
         while (!queue.isEmpty()){
             Node currentNode = queue.poll();
-            String currentWord = currentNode.word;
+            String currentWord = currentNode.getWord();
             visited.add(currentWord);
 
             if (currentWord.equals(end)) {
@@ -25,7 +29,7 @@ public class Algoritma{
                 return result;
             }
 
-            List<String> neighbors = Util.getNeighboors(currentWord, Database);
+            List<String> neighbors = Neighboors.getNeighboors(currentWord, Database);
             count++;
 
             for (String neighbor : neighbors) {
@@ -33,7 +37,7 @@ public class Algoritma{
                     visited.add(neighbor);
                     Node newNode = new Node();
                     if (Pilihan == 1) {
-                        newNode = new Node(neighbor, currentNode.cost + 1, currentNode);
+                        newNode = new Node(neighbor, currentNode.getCost() + 1, currentNode);
                     } else if (Pilihan == 2) {
                         newNode = new Node(neighbor, heuristicCost(neighbor,end), currentNode);
                     } else if (Pilihan == 3) {
@@ -60,8 +64,8 @@ public class Algoritma{
     private static List<String> makePath(Node node) {
         List<String> result = new ArrayList<>();
         while (node != null) {
-            result.add(node.word);
-            node = node.path;
+            result.add(node.getWord());
+            node = node.getPath();
         }
         Collections.reverse(result);
         return result;

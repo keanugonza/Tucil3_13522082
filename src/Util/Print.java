@@ -1,42 +1,10 @@
-import java.io.*;
-import java.util.*;
-public class Util {
-    public static List<String> readWordsFromFile() {
-        String filename = "src\\words.txt";
-        List<String> words = new ArrayList<>();
+package Util;
 
-        System.out.println("Current working directory: " + System.getProperty("user.dir")); // debug info
+import java.util.ArrayList;
+import java.util.List;
+import java.util.PriorityQueue;
 
-        try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
-            String line;
-            while ((line = br.readLine()) != null) {
-                String[] lineWords = line.split("\\s+");
-                words.addAll(Arrays.asList(lineWords));
-            }
-        } catch (IOException e) {
-            System.err.println("Error membaca file: " + e.getMessage());
-        }
-
-        return words;
-    }
-
-    public static List<String> getNeighboors(String FindWord, List<String> Database){
-        List<String> neighboors = new ArrayList<>();
-        for(String Word : Database){
-            int beda = 0;
-            for(int i = 0; i < Word.length(); i++){
-                if (Word.charAt(i) != FindWord.charAt(i)){
-                    beda++;
-                }
-            }
-            if(beda == 1){
-                neighboors.add(Word);
-            }
-
-        }
-        return neighboors;
-    }
-
+public class Print {
     public static void printAlgo(){
         System.out.println("\nAlgoritma yang bisa digunakan: ");
         System.out.println("0. Semua algoritma (cheat)");
@@ -66,10 +34,6 @@ public class Util {
 
     }
 
-    public static boolean isExist(String word, List<String> Database){
-        return Database.contains(word);
-    }
-
     public static void printPriorityQueue(PriorityQueue<Node> queue) {
         PriorityQueue<Node> tempQueue = new PriorityQueue<>(queue);
 
@@ -78,9 +42,8 @@ public class Util {
         List<String> result = new ArrayList<>();
         while (!tempQueue.isEmpty()) {
             Node node = tempQueue.poll();
-            result.add(node.word + " (Cost: " + node.cost + ")");
+            result.add(node.getWord() + " (Cost: " + node.getCost() + ")");
         }
         System.out.println(String.join(", ", result));
     }
 }
-

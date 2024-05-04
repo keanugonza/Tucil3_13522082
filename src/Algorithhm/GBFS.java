@@ -1,4 +1,8 @@
+package Algorithhm;
 import java.util.*;
+
+import Util.Neighboors;
+import Util.Node;
 
 public class GBFS{
 
@@ -18,7 +22,7 @@ public class GBFS{
         while (!queue.isEmpty()){
             Node currentNode = queue.poll();
             queue.clear();
-            String currentWord = currentNode.word;
+            String currentWord = currentNode.getWord();
             visited.add(currentWord);
 //            System.out.println(count + ". " + currentWord);
 
@@ -28,7 +32,7 @@ public class GBFS{
                 return result;
             }
 
-            List<String> neighbors = Util.getNeighboors(currentWord, Database);
+            List<String> neighbors = Neighboors.getNeighboors(currentWord, Database);
             count++;
 
 //            Collections.reverse(neighbors);
@@ -63,8 +67,8 @@ public class GBFS{
     private static List<String> makePath(Node node) {
         List<String> result = new ArrayList<>();
         while (node != null) {
-            result.add(node.word);
-            node = node.path;
+            result.add(node.getWord());
+            node = node.getPath();
         }
         Collections.reverse(result);
         return result;

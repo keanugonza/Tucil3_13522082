@@ -1,3 +1,4 @@
+package Util;
 public class Node implements Comparable<Node> {
     Node path;
     String word;
@@ -17,6 +18,18 @@ public class Node implements Comparable<Node> {
         this.word = null;
         this.cost = 0;
         this.timestamp = Counter++; // Incremental unique sequence
+    }
+
+    public String getWord(){
+        return word;
+    }
+
+    public int getCost(){
+        return cost;
+    }
+
+    public Node getPath(){
+        return path;
     }
 
     @Override
