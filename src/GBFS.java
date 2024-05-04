@@ -12,17 +12,16 @@ public class GBFS{
 
         List<String> visited = new ArrayList<>();
         visited.add(start);
-
+//        Util.printPriorityQueue(queue);
         int count = 1;
         while (!queue.isEmpty()){
-//            printPriorityQueue(queue);
             Node currentNode = queue.poll();
             String currentWord = currentNode.word;
             visited.add(currentWord);
+//            System.out.println(count + ". " + currentWord);
 
             if (currentWord.equals(end)) {
-                List<String> result = new ArrayList<>();
-                result = makePath(currentNode);
+                List<String> result = makePath(currentNode);
                 result.add(0, String.valueOf(count));
                 return result;
             }
@@ -37,6 +36,7 @@ public class GBFS{
                     queue.add(newNode);
                 }
             }
+//            Util.printPriorityQueue(queue);
         }
 
         return null;
@@ -61,22 +61,4 @@ public class GBFS{
         Collections.reverse(result);
         return result;
     }
-
-//    public static void printPriorityQueue(PriorityQueue<Node> queue) {
-//        System.out.print("Priority Queue: ");
-//
-//        Iterator<Node> iterator = queue.iterator();
-//
-//        // Iterasi melalui PriorityQueue dan cetak nama beserta cost
-//        while (iterator.hasNext()) {
-//            Node node = iterator.next();
-//            System.out.print(node.word + " (Cost: " + node.cost + ")");
-//
-//            if (iterator.hasNext()) {
-//                System.out.print(", "); // Tambahkan koma jika masih ada elemen
-//            }
-//        }
-//
-//        System.out.println(); // Pindah baris setelah mencetak queue
-//    }
 }

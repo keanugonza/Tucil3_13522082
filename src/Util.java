@@ -59,6 +59,7 @@ public class Util {
                     System.out.print(Result.get(i));
                 }
             }
+            System.out.println();
         }else{
             System.out.println("jalur tidak ditemukan");
         }
@@ -66,10 +67,20 @@ public class Util {
     }
 
     public static boolean isExist(String word, List<String> Database){
-        if (Database.contains(word)){
-            return true;
-        } else{
-            return false;
+        return Database.contains(word);
+    }
+
+    public static void printPriorityQueue(PriorityQueue<Node> queue) {
+        PriorityQueue<Node> tempQueue = new PriorityQueue<>(queue);
+
+        System.out.print("Queue: ");
+
+        List<String> result = new ArrayList<>();
+        while (!tempQueue.isEmpty()) {
+            Node node = tempQueue.poll();
+            result.add(node.word + " (Cost: " + node.cost + ")");
         }
+        System.out.println(String.join(", ", result));
     }
 }
+
