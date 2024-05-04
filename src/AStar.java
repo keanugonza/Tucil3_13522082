@@ -12,12 +12,14 @@ public class AStar{
 
         List<String> visited = new ArrayList<>();
         visited.add(start);
+//        Util.printPriorityQueue(queue);
 
         int count = 1;
         while (!queue.isEmpty()){
             Node currentNode = queue.poll();
             String currentWord = currentNode.word;
             visited.add(currentWord);
+//            System.out.println(count + ". " + currentWord);
 
             if (currentWord.equals(end)) {
                 List<String> result = makePath(currentNode);
@@ -28,13 +30,20 @@ public class AStar{
             List<String> neighbors = Util.getNeighboors(currentWord, Database);
             count++;
 
+//            Collections.reverse(neighbors);
             for (String neighbor : neighbors) {
                 if (!visited.contains(neighbor)) {
                     visited.add(neighbor);
                     Node newNode = new Node(neighbor, count + heuristicCost(neighbor,end), currentNode);
                     queue.add(newNode);
+                    if (neighbor.equals(end)) {
+                        List<String> result = makePath(newNode);
+                        result.add(0, String.valueOf(count));
+                        return result;
+                    }
                 }
             }
+//            Util.printPriorityQueue(queue);
         }
 
         return null;

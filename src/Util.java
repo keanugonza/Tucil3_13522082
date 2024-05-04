@@ -2,7 +2,7 @@ import java.io.*;
 import java.util.*;
 public class Util {
     public static List<String> readWordsFromFile() {
-        String filename = "src\\words_alpha.txt";
+        String filename = "src\\words.txt";
         List<String> words = new ArrayList<>();
 
         System.out.println("Current working directory: " + System.getProperty("user.dir")); // debug info
@@ -50,7 +50,7 @@ public class Util {
         if (Result != null){
             for(int i = 0; i < Result.size(); i++){
                 if(i==0){
-                    System.out.println("\n======================JAWABAN======================");
+                    System.out.println("======================JAWABAN======================");
                     System.out.println("Jumlah Node dikunjungi: " + Result.get(i));
                     System.out.print("Path: ");
                 } else if (i != Result.size()-1) {

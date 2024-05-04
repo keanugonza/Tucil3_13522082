@@ -13,9 +13,11 @@ public class GBFS{
         List<String> visited = new ArrayList<>();
         visited.add(start);
 //        Util.printPriorityQueue(queue);
+
         int count = 1;
         while (!queue.isEmpty()){
             Node currentNode = queue.poll();
+            queue.clear();
             String currentWord = currentNode.word;
             visited.add(currentWord);
 //            System.out.println(count + ". " + currentWord);
@@ -29,11 +31,17 @@ public class GBFS{
             List<String> neighbors = Util.getNeighboors(currentWord, Database);
             count++;
 
+//            Collections.reverse(neighbors);
             for (String neighbor : neighbors) {
                 if (!visited.contains(neighbor)) {
                     visited.add(neighbor);
                     Node newNode = new Node(neighbor, heuristicCost(neighbor,end), currentNode);
                     queue.add(newNode);
+                    if (neighbor.equals(end)) {
+                        List<String> result = makePath(newNode);
+                        result.add(0, String.valueOf(count));
+                        return result;
+                    }
                 }
             }
 //            Util.printPriorityQueue(queue);

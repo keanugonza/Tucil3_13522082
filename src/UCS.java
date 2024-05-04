@@ -12,6 +12,7 @@ public class UCS{
 
         List<String> visited = new ArrayList<>();
         visited.add(start);
+        Util.printPriorityQueue(queue);
 
         int count = 1;
         while (!queue.isEmpty()) {
@@ -19,6 +20,7 @@ public class UCS{
             Node currentNode = queue.poll();
             String currentWord = currentNode.word;
             visited.add(currentWord);
+//            System.out.println(count + ". " + currentWord);
 
             if (currentWord.equals(end)) {
                 List<String> result = makePath(currentNode);
@@ -29,13 +31,20 @@ public class UCS{
             List<String> neighbors = Util.getNeighboors(currentWord, Database);
             count++;
 
+//            Collections.reverse(neighbors);
             for (String neighbor : neighbors) {
                 if (!visited.contains(neighbor)) {
                     visited.add(neighbor);
                     Node newNode = new Node(neighbor, currentNode.cost + 1, currentNode);
                     queue.add(newNode);
+                    if (neighbor.equals(end)) {
+                        List<String> result = makePath(newNode);
+                        result.add(0, String.valueOf(count));
+                        return result;
+                    }
                 }
             }
+//            Util.printPriorityQueue(queue);
         }
 
         return null;

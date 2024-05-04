@@ -23,7 +23,7 @@ public class Node implements Comparable<Node> {
     public int compareTo(Node other) {
         int costComparison = Integer.compare(this.cost, other.cost);
        if (costComparison == 0) {
-           return Long.compare(other.timestamp, this.timestamp);
+           return Long.compare(this.timestamp, other.timestamp);
        }
         return costComparison;
     }

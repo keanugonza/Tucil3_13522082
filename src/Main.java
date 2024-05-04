@@ -1,4 +1,3 @@
-import javax.xml.crypto.Data;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -32,7 +31,7 @@ public class Main {
             Util.printAlgo();
             int pilihan = scanner.nextInt();
             while (pilihan < 0 || pilihan > 3) {
-                System.out.println("Pilih nomor algoritma dengan benar: ");
+                System.out.print("Pilih nomor algoritma dengan benar: ");
                 pilihan = scanner.nextInt();
             }
 
@@ -42,24 +41,47 @@ public class Main {
                     Database.add(data);
                 }
             }
-
+            double startTime =0;
+            double endTime =0;
             if(pilihan == 1) {
-                Result = Algoritma.find_result(start,end,Database, 1);
+                startTime = System.nanoTime();
+                Result = UCS.UCS_Algorithm(start,end,Database);
+                endTime = System.nanoTime();
             } else if(pilihan == 2) {
-                Result = Algoritma.find_result(start,end,Database, 2);
+                startTime = System.nanoTime();
+                Result = GBFS.GBFS_Algorithm(start,end,Database);
+                endTime = System.nanoTime();
             } else if(pilihan == 3) {
-                Result = Algoritma.find_result(start,end,Database, 3);
-            } else if(pilihan == 0) {
-                Result = UCS.UCS_Algorithm(start, end, Database);
-                Util.printHasil(Result);
-                Result = GBFS.GBFS_Algorithm(start, end, Database);
-                Util.printHasil(Result);
-                Result = AStar.AStar_Algorithm(start, end, Database);
-                Util.printHasil(Result);
+                startTime = System.nanoTime();
+                Result = AStar.AStar_Algorithm(start,end,Database);
+                endTime = System.nanoTime();
             }
 
+            if(pilihan == 0){
+                startTime = System.nanoTime();
+                Result = UCS.UCS_Algorithm(start, end, Database);
+                endTime = System.nanoTime();
+                System.out.println("\nUCS Algorithm");
+                Util.printHasil(Result);
+                System.out.println((endTime - startTime)/1_000_000_000 + " detik");
+                startTime = System.nanoTime();
+                Result = GBFS.GBFS_Algorithm(start, end, Database);
+                endTime = System.nanoTime();
+                System.out.println("\nGBFS Algorithm");
+                Util.printHasil(Result);
+                System.out.println((endTime - startTime)/1_000_000_000 + " detik");
+                startTime = System.nanoTime();
+                Result = AStar.AStar_Algorithm(start, end, Database);
+                endTime = System.nanoTime();
+                System.out.println("\nA* Algorithm");
+                Util.printHasil(Result);
+                System.out.println((endTime - startTime)/1_000_000_000 + " detik");
 
-            Util.printHasil(Result);
+            } else{
+                System.out.println();
+                Util.printHasil(Result);
+                System.out.println((endTime - startTime)/1_000_000_000 + " detik");
+            }
         }
     }
 }
