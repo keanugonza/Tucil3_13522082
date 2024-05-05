@@ -13,10 +13,15 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         List<String> Database_raw = readFile.readWordsFromFile();
-        List<String> Result = new ArrayList<>();
-
-        System.out.print("\nMasukkan kata awal: ");
-        String start = scanner.next();
+        List<String> Result;
+        System.out.println("\n=========================================");
+        System.out.println("         Welcome to Word Ladder");
+        System.out.println("          Made by: Keanu Gonza");
+        System.out.println("=========================================");
+        System.out.println("Masukan Kata akan " + "\033[0;32m" + "OTOMATIS LOWER CASE!!! ");
+        System.out.print("\033[0m" + "\nMasukkan kata awal: ");
+        String input = scanner.next();
+        String start = input.toLowerCase();
         while(!readFile.isExist(start, Database_raw)){
             System.out.println("Kata tidak exist");
             System.out.print("Masukkan kata awal: ");
@@ -24,7 +29,8 @@ public class Main {
         }
 
         System.out.print("\nMasukkan kata tujuan: ");
-        String end = scanner.next();
+        String input2 = scanner.next();
+        String end = input2.toLowerCase();
         while(!readFile.isExist(end, Database_raw)){
             System.out.println("Kata tidak exist");
             System.out.print("Masukkan kata tujuan: ");
@@ -36,7 +42,7 @@ public class Main {
         }else{
             Print.printAlgo();
             int pilihan = scanner.nextInt();
-            while (pilihan < 0 || pilihan > 3) {
+            while (pilihan < 1 || pilihan > 3) {
                 System.out.print("Pilih nomor algoritma dengan benar: ");
                 pilihan = scanner.nextInt();
             }
@@ -47,8 +53,8 @@ public class Main {
                     Database.add(data);
                 }
             }
-            double startTime =0;
-            double endTime =0;
+            double startTime;
+            double endTime;
             if(pilihan == 1) {
                 startTime = System.nanoTime();
                 Result = UCS.UCS_Algorithm(start,end,Database);
@@ -57,7 +63,7 @@ public class Main {
                 startTime = System.nanoTime();
                 Result = GBFS.GBFS_Algorithm(start,end,Database);
                 endTime = System.nanoTime();
-            } else if(pilihan == 3) {
+            } else {
                 startTime = System.nanoTime();
                 Result = AStar.AStar_Algorithm(start,end,Database);
                 endTime = System.nanoTime();
@@ -69,28 +75,3 @@ public class Main {
         }
     }
 }
-
-//if(pilihan == 0){
-//    startTime = System.nanoTime();
-//    Result = UCS.UCS_Algorithm(start, end, Database);
-//    endTime = System.nanoTime();
-//    System.out.println("\nUCS Algorithm");
-//    Print.printHasil(Result);
-//    System.out.println((endTime - startTime)/1_000_000_000 + " detik");
-//    startTime = System.nanoTime();
-//    Result = GBFS.GBFS_Algorithm(start, end, Database);
-//    endTime = System.nanoTime();
-//    System.out.println("\nGBFS Algorithm");
-//    Print.printHasil(Result);
-//    System.out.println((endTime - startTime)/1_000_000_000 + " detik");
-//    startTime = System.nanoTime();
-//    Result = AStar.AStar_Algorithm(start, end, Database);
-//    endTime = System.nanoTime();
-//    System.out.println("\nA* Algorithm");
-//    Print.printHasil(Result);
-//    System.out.println((endTime - startTime)/1_000_000_000 + " detik");
-//} else{
-//    System.out.println();
-//    Print.printHasil(Result);
-//    System.out.println((endTime - startTime)/1_000_000_000 + " detik");
-//}

@@ -3,8 +3,8 @@ package Util;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Neighboors {
-        public static List<String> getNeighboors(String FindWord, List<String> Database){
+public class Neighbors {
+        public static List<String> getNeighbors(String FindWord, List<String> Database){
         List<String> neighboors = new ArrayList<>();
         for(String Word : Database){
             int beda = 0;

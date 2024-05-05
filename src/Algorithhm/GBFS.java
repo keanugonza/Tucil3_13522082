@@ -1,49 +1,49 @@
 package Algorithhm;
 import java.util.*;
 
-import Util.Neighboors;
+import Util.Neighbors;
 import Util.Node;
 
 public class GBFS{
 
     public static List<String> GBFS_Algorithm(String start, String end, List<String> Database) {
         List<String> noPath = new ArrayList<>();
-        if (!Database.contains(start) || !Database.contains(end)) {
-            noPath.add(0,"0");
-            return noPath;
-        }
 
+        //jika start == end maka keluarkan path 1
         if (start.equals(end)) {
             noPath.add(0,"1");
             noPath.add(1,start);
             return noPath;
         }
 
+        //inisialisasi PriorityQueue
         PriorityQueue<Node> queue = new PriorityQueue<>();
         queue.add(new Node(start, 0, null));
 
+        //Inisialisasi visited
         List<String> visited = new ArrayList<>();
         visited.add(start);
-//        Util.printPriorityQueue(queue);
 
-        int count = 1;
-        while (!queue.isEmpty()){
-            Node currentNode = queue.poll();
-            queue.clear();
+
+        int count = 0;
+        while (!queue.isEmpty()){ //loop sampai quue kosong
+            Node currentNode = queue.poll(); //pop node pada queue
+            queue.clear(); //menghapus queue agar tidak backtrack
             String currentWord = currentNode.getWord();
             visited.add(currentWord);
-//            System.out.println(count + ". " + currentWord);
 
+            //jika sudah saampai tujuan, keluarkan hasil
             if (currentWord.equals(end)) {
                 List<String> result = makePath(currentNode);
                 result.add(0, String.valueOf(count));
                 return result;
             }
 
-            List<String> neighbors = Neighboors.getNeighboors(currentWord, Database);
+            //cari tetangga dari currentWord
+            List<String> neighbors = Neighbors.getNeighbors(currentWord, Database);
             count++;
 
-//            Collections.reverse(neighbors);
+            //masukan tetangga ke queue
             for (String neighbor : neighbors) {
                 if (!visited.contains(neighbor)) {
                     visited.add(neighbor);
@@ -56,13 +56,13 @@ public class GBFS{
                     }
                 }
             }
-//            Util.printPriorityQueue(queue);
         }
 
         noPath.add(0, String.valueOf(count));
         return noPath;
     }
 
+    //menghitung cost heuristic
     private static int heuristicCost(String current, String target) {
         int count = 0;
         for (int i = 0; i < current.length(); i++) {
@@ -73,6 +73,7 @@ public class GBFS{
         return count;
     }
 
+    //membuat path
     private static List<String> makePath(Node node) {
         List<String> result = new ArrayList<>();
         while (node != null) {
