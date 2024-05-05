@@ -4,7 +4,7 @@ import java.util.*;
 
 public class readFile {
     public static List<String> readWordsFromFile() {
-        String filename = "src\\words.txt";
+        String filename = "words.txt";
         List<String> result = new ArrayList<>();
 
         try (BufferedReader br = new BufferedReader(new FileReader(filename))){
