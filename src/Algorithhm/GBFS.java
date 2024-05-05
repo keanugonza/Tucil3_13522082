@@ -46,7 +46,6 @@ public class GBFS{
             //masukan tetangga ke queue
             for (String neighbor : neighbors) {
                 if (!visited.contains(neighbor)) {
-                    visited.add(neighbor);
                     Node newNode = new Node(neighbor, heuristicCost(neighbor,end), currentNode);
                     queue.add(newNode);
                     if (neighbor.equals(end)) {

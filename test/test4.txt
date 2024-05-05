@@ -7,10 +7,9 @@ Path: crawler -> brawler -> brawled -> brailed -> braised -> bruised -> bruiser 
 Time: 0.0448103 detik
 
 Algoritma GBFS:
-Jalur tidak ditemukan
-Jumlah Node dikunjungi: 5
-Time: 0.0190038 detik
-
+Jumlah Node dikunjungi: 10
+Path: crawler -> cradler -> cradled -> craaled -> crawled -> brawled -> brailed -> braised -> bruised -> bruiser -> cruiser
+Time: 0.029755 detik
 
 Algoritma A Star:
 Jumlah Node dikunjungi: 41
