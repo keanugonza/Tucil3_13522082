@@ -1,0 +1,18 @@
+Start: crawler
+End: cruiser
+
+Algoritma UCS:
+Jumlah Node dikunjungi: 53
+Path: crawler -> brawler -> brawled -> brailed -> braised -> bruised -> bruiser -> cruiser
+Time: 0.0448103 detik
+
+Algoritma GBFS:
+Jalur tidak ditemukan
+Jumlah Node dikunjungi: 5
+Time: 0.0190038 detik
+
+
+Algoritma A Star:
+Jumlah Node dikunjungi: 41
+Path: crawler -> brawler -> brawled -> brailed -> braised -> bruised -> bruiser -> cruiser
+Time: 0.0393421 detik

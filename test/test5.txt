@@ -1,0 +1,17 @@
+Start: skate
+End: board
+
+Algoritma UCS:
+Jumlah Node dikunjungi: 527
+Path: skate -> skats -> scats -> scars -> soars -> boars -> board
+Time: 0.1019808 detik
+
+Algoritma GBFS:
+Jalur tidak ditemukan
+Jumlah Node dikunjungi: 3
+Time: 0.0081999 detik
+
+Algoritma A Star:
+Jumlah Node dikunjungi: 503
+Path: skate -> skats -> scats -> scars -> soars -> boars -> board
+Time: 0.0992623 detik

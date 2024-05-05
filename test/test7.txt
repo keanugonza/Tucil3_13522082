@@ -1,0 +1,18 @@
+Start: gadget
+End: widget
+
+Algoritma UCS:
+Jumlah Node dikunjungi: 2330
+Path: gadget -> garget -> gorget -> forget -> forged -> fogged -> figged -> fidged -> fidget -> widget
+Time: 0.821838 detik
+
+Algoritma GBFS:
+Jalur tidak ditemukan
+Jumlah Node dikunjungi: 8
+Time: 0.0207275 detik
+
+Algoritma A Star:
+Jumlah Node dikunjungi: 1675
+Path: gadget -> garget -> gorget -> forget -> forged -> fogged -> figged -> fidged -> fidget -> widget
+Time: 0.5547385 detik
+

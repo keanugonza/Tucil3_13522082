@@ -1,0 +1,20 @@
+Start: bucket
+End: rocket
+
+Algoritma UCS:
+Jumlah Node dikunjungi: 86
+Path: bucket -> bucked -> rucked -> rocked -> rocket
+Time: 0.0511074 detik
+
+
+Algoritma GBFS:
+Jumlah Node dikunjungi: 5
+Path: bucket -> becket -> becked -> recked -> rocked -> rocket
+Time: 0.0133775 detik
+
+
+Algoritma A Star:
+Jumlah Node dikunjungi: 31
+Path: bucket -> tucket -> tacket -> racket -> rocket
+Time: 0.0287464 detik
+

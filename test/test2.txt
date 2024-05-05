@@ -1,0 +1,17 @@
+Start: same
+End: same
+
+Algoritma UCS:
+Jumlah Node dikunjungi: 1
+Path: same
+Time: 0.0012074 detik
+
+Algoritma GBFS:
+Jumlah Node dikunjungi: 1
+Path: same
+Time: 0.0011413 detik
+
+Algoritma A Star:
+Jumlah Node dikunjungi: 1
+Path: same
+Time: 0.0011596 detik

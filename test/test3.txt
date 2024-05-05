@@ -1,0 +1,17 @@
+Start: west
+End: east
+
+Algoritma UCS:
+Jumlah Node dikunjungi: 12
+Path: west -> wast -> east
+Time: 0.009904 detik
+
+Algoritma GBFS:
+Jumlah Node dikunjungi: 12
+Path: west -> wast -> east
+Time: 0.0061091 detik
+
+Algoritma A Star:
+Jumlah Node dikunjungi: 12
+Path: west -> wast -> east
+Time: 0.0053248 detik
