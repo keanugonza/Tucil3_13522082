@@ -8,8 +8,16 @@ import Util.Node;
 public class UCS{
 
     public static List<String> UCS_Algorithm(String start, String end, List<String> Database) {
+        List<String> noPath = new ArrayList<>();
         if (!Database.contains(start) || !Database.contains(end)) {
-            return null;
+            noPath.add(0,"0");
+            return noPath;
+        }
+
+        if (start.equals(end)) {
+            noPath.add(0,"1");
+            noPath.add(1,start);
+            return noPath;
         }
 
         PriorityQueue<Node> queue = new PriorityQueue<>();
@@ -52,7 +60,8 @@ public class UCS{
 //            Util.printPriorityQueue(queue);
         }
 
-        return null;
+        noPath.add(0, String.valueOf(count));
+        return noPath;
     }
 
     private static List<String> makePath(Node node) {

@@ -15,7 +15,7 @@ public class Print {
     }
 
     public static void printHasil(List<String> Result){
-        if (Result != null){
+        if (Result.size()!=1){
             for(int i = 0; i < Result.size(); i++){
                 if(i==0){
                     System.out.println("======================JAWABAN======================");
@@ -30,6 +30,7 @@ public class Print {
             System.out.println();
         }else{
             System.out.println("jalur tidak ditemukan");
+            System.out.println("Jumlah Node dikunjungi: " + Result.get(0));
         }
 
     }

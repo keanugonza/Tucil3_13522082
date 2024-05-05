@@ -7,8 +7,16 @@ import Util.Node;
 public class GBFS{
 
     public static List<String> GBFS_Algorithm(String start, String end, List<String> Database) {
+        List<String> noPath = new ArrayList<>();
         if (!Database.contains(start) || !Database.contains(end)) {
-            return null;
+            noPath.add(0,"0");
+            return noPath;
+        }
+
+        if (start.equals(end)) {
+            noPath.add(0,"1");
+            noPath.add(1,start);
+            return noPath;
         }
 
         PriorityQueue<Node> queue = new PriorityQueue<>();
@@ -51,7 +59,8 @@ public class GBFS{
 //            Util.printPriorityQueue(queue);
         }
 
-        return null;
+        noPath.add(0, String.valueOf(count));
+        return noPath;
     }
 
     private static int heuristicCost(String current, String target) {

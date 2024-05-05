@@ -63,31 +63,34 @@ public class Main {
                 endTime = System.nanoTime();
             }
 
-            if(pilihan == 0){
-                startTime = System.nanoTime();
-                Result = UCS.UCS_Algorithm(start, end, Database);
-                endTime = System.nanoTime();
-                System.out.println("\nUCS Algorithm");
-                Print.printHasil(Result);
-                System.out.println((endTime - startTime)/1_000_000_000 + " detik");
-                startTime = System.nanoTime();
-                Result = GBFS.GBFS_Algorithm(start, end, Database);
-                endTime = System.nanoTime();
-                System.out.println("\nGBFS Algorithm");
-                Print.printHasil(Result);
-                System.out.println((endTime - startTime)/1_000_000_000 + " detik");
-                startTime = System.nanoTime();
-                Result = AStar.AStar_Algorithm(start, end, Database);
-                endTime = System.nanoTime();
-                System.out.println("\nA* Algorithm");
-                Print.printHasil(Result);
-                System.out.println((endTime - startTime)/1_000_000_000 + " detik");
-
-            } else{
-                System.out.println();
-                Print.printHasil(Result);
-                System.out.println((endTime - startTime)/1_000_000_000 + " detik");
-            }
+            System.out.println();
+            Print.printHasil(Result);
+            System.out.println((endTime - startTime)/1_000_000_000 + " detik");
         }
     }
 }
+
+//if(pilihan == 0){
+//    startTime = System.nanoTime();
+//    Result = UCS.UCS_Algorithm(start, end, Database);
+//    endTime = System.nanoTime();
+//    System.out.println("\nUCS Algorithm");
+//    Print.printHasil(Result);
+//    System.out.println((endTime - startTime)/1_000_000_000 + " detik");
+//    startTime = System.nanoTime();
+//    Result = GBFS.GBFS_Algorithm(start, end, Database);
+//    endTime = System.nanoTime();
+//    System.out.println("\nGBFS Algorithm");
+//    Print.printHasil(Result);
+//    System.out.println((endTime - startTime)/1_000_000_000 + " detik");
+//    startTime = System.nanoTime();
+//    Result = AStar.AStar_Algorithm(start, end, Database);
+//    endTime = System.nanoTime();
+//    System.out.println("\nA* Algorithm");
+//    Print.printHasil(Result);
+//    System.out.println((endTime - startTime)/1_000_000_000 + " detik");
+//} else{
+//    System.out.println();
+//    Print.printHasil(Result);
+//    System.out.println((endTime - startTime)/1_000_000_000 + " detik");
+//}

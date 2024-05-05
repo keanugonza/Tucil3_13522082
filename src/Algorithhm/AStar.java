@@ -7,8 +7,16 @@ import Util.Node;
 public class AStar{
 
     public static List<String> AStar_Algorithm(String start, String end, List<String> Database) {
+        List<String> noPath = new ArrayList<>();
         if (!Database.contains(start) || !Database.contains(end)) {
-            return null;
+            noPath.add(0,"0");
+            return noPath;
+        }
+
+        if (start.equals(end)) {
+            noPath.add(0,"1");
+            noPath.add(1,start);
+            return noPath;
         }
 
         PriorityQueue<Node> queue = new PriorityQueue<>();
@@ -16,9 +24,9 @@ public class AStar{
 
         List<String> visited = new ArrayList<>();
         visited.add(start);
-//        Util.printPriorityQueue(queue);
+//        Print.printPriorityQueue(queue);
 
-        int count = 1;
+        int count = 0;
         while (!queue.isEmpty()){
             Node currentNode = queue.poll();
             String currentWord = currentNode.getWord();
@@ -47,10 +55,11 @@ public class AStar{
                     }
                 }
             }
-//            Util.printPriorityQueue(queue);
+//            Print.printPriorityQueue(queue);
         }
 
-        return null;
+        noPath.add(0, String.valueOf(count));
+        return noPath;
     }
 
     private static int heuristicCost(String current, String target) {
