@@ -31,9 +31,8 @@ Program diimplementasikan dalam bahasa Java.
 
 
 ## Screenshots
-![Example screenshot](./img/screenshot.png)
-<!-- If you have screenshots you'd like to share, include them here. -->
-
+![welcome](test/welcome.png)
+![skate to board](test/test.png)
 
 ## Setup
 1. Clone repository ini pada link berikut:
